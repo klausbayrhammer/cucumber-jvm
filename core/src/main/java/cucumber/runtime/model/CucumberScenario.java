@@ -1,17 +1,23 @@
 package cucumber.runtime.model;
 
 import cucumber.runtime.Runtime;
+import cucumber.runtime.ScenarioInfo;
 import gherkin.formatter.Formatter;
 import gherkin.formatter.Reporter;
 import gherkin.formatter.model.Row;
 import gherkin.formatter.model.Scenario;
+import gherkin.formatter.model.Tag;
 
-public class CucumberScenario extends CucumberTagStatement {
+import java.util.Set;
+
+public class CucumberScenario extends CucumberTagStatement implements ScenarioInfo {
     private final CucumberBackground cucumberBackground;
+    private String scenarioName;
 
     public CucumberScenario(CucumberFeature cucumberFeature, CucumberBackground cucumberBackground, Scenario scenario) {
         super(cucumberFeature, scenario);
         this.cucumberBackground = cucumberBackground;
+        scenarioName = scenario.getName();
     }
 
     public CucumberScenario(CucumberFeature cucumberFeature, CucumberBackground cucumberBackground, Scenario exampleScenario, Row example) {
@@ -44,5 +50,15 @@ public class CucumberScenario extends CucumberTagStatement {
             cucumberBackground.format(formatter);
             cucumberBackground.runSteps(reporter, runtime);
         }
+    }
+
+    @Override
+    public String getScenarioName() {
+        return scenarioName;
+    }
+
+    @Override
+    public Set<Tag> getTags() {
+        return tagsAndInheritedTags();
     }
 }
