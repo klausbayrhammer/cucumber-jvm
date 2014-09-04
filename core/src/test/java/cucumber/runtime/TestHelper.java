@@ -40,7 +40,7 @@ public class TestHelper {
 
             @Override
             public String getAbsolutePath() {
-                throw new UnsupportedOperationException();
+                return path;
             }
 
             @Override

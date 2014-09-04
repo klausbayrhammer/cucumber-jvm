@@ -150,7 +150,7 @@ public class RuntimeOptions {
         return load(resourceLoader, featurePaths, filters, System.out);
     }
 
-    List<Object> getPlugins() {
+    public List<Object> getPlugins() {
         if (!pluginNamesInstantiated) {
             for (String pluginName : pluginNames) {
                 Object plugin = pluginFactory.create(pluginName);

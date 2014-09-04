@@ -128,7 +128,7 @@ public class FeatureBuilder implements Formatter {
         Parser parser = new Parser(formatter);
 
         try {
-            parser.parse(gherkin, convertFileSeparatorToForwardSlash(resource.getPath()), 0);
+            parser.parse(gherkin, convertFileSeparatorToForwardSlash(resource.getAbsolutePath()), 0);
         } catch (Exception e) {
             throw new CucumberException(String.format("Error parsing feature file %s", convertFileSeparatorToForwardSlash(resource.getPath())), e);
         }

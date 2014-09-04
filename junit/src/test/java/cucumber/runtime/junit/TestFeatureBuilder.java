@@ -23,7 +23,7 @@ public class TestFeatureBuilder {
 
             @Override
             public String getAbsolutePath() {
-                throw new UnsupportedOperationException();
+                return getPath();
             }
 
             @Override

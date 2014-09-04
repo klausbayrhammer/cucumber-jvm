@@ -13,8 +13,6 @@ import org.junit.Test;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -22,14 +20,8 @@ import java.util.Properties;
 import java.util.regex.Pattern;
 
 import static java.util.Arrays.asList;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.withSettings;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 public class RuntimeOptionsTest {
     @Test
@@ -281,6 +273,7 @@ public class RuntimeOptionsTest {
             throws IOException, UnsupportedEncodingException {
         Resource resource1 = mock(Resource.class);
         when(resource1.getPath()).thenReturn(featurePath);
+        when(resource1.getAbsolutePath()).thenReturn(featurePath);
         when(resource1.getInputStream()).thenReturn(new ByteArrayInputStream(feature.getBytes("UTF-8")));
         when(resourceLoader.resources(featurePath, ".feature")).thenReturn(asList(resource1));
     }

@@ -84,7 +84,7 @@ public class StepdefGeneratorTest {
 
             @Override
             public String getAbsolutePath() {
-                throw new UnsupportedOperationException();
+                return getPath();
             }
 
             @Override

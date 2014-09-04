@@ -223,6 +223,7 @@ public class CucumberFeatureTest {
             throws IOException, UnsupportedEncodingException {
         Resource resource = mock(Resource.class);
         when(resource.getPath()).thenReturn(featurePath);
+        when(resource.getAbsolutePath()).thenReturn(featurePath);
         when(resource.getInputStream()).thenReturn(new ByteArrayInputStream(feature.getBytes("UTF-8")));
         when(resourceLoader.resources(featurePath, extension)).thenReturn(asList(resource));
     }

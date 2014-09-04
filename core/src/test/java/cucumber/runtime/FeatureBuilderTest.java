@@ -63,6 +63,7 @@ public class FeatureBuilderTest {
     private Resource createResourceMock(String featurePath) throws IOException {
         Resource resource = mock(Resource.class);
         when(resource.getPath()).thenReturn(featurePath);
+        when(resource.getAbsolutePath()).thenReturn(featurePath);
         ByteArrayInputStream feature = new ByteArrayInputStream("Feature: foo".getBytes("UTF-8"));
         when(resource.getInputStream()).thenReturn(feature);
         return resource;
